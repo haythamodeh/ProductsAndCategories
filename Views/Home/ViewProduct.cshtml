@@ -1,0 +1,17 @@
+@model Association
+<h1 class="text-center mb-5" style="display:inline-block;">@ViewBag.Product.Name</h1>
+<a class="btn btn-primary" href="/products" style="float:right;">Home</a>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Categories</h3>
+        @{
+            foreach(var c in @ViewBag.AllCategoriestOfProduct.Categories)
+            {
+                <p> -@c.Category.Name</p>
+            }
+        }
+    </div>
+    <div class="col-md-6">
+        <partial name="addCategoryToProductPartial"/>
+    </div>
+</div>

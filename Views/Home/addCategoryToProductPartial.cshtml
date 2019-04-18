@@ -1,0 +1,17 @@
+@model Product
+<form asp-action="AddCategoryToProduct" method="post">
+    <h3>Add Category</h3>
+    @if(TempData["errorC"] != null)
+    {
+        <span class="text-danger">@TempData["errorC"]</span>
+    }
+    <select class="form-control mb-3" asp-for="Name">
+        @{
+            foreach(var c in @ViewBag.AllCategoriesThatAreAvailable)
+            {
+                <option value="@c.CategoryID">@c.Name</option>
+            }
+        }
+    </select>
+    <button class="btn btn-success">Add</button>
+</form>

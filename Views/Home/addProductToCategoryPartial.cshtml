@@ -1,0 +1,25 @@
+@model Product
+<form asp-action="AddProductToCategory" method="post">
+    <h3>Add Product</h3>
+    @{
+        if(ViewBag.AllProductsThatAreAvailable.Count == 0)
+        {
+            TempData["errorP"] = "Theres no more products to add";
+            <span class="text-danger">@TempData["errorP"]</span>
+        }
+    }
+    <select class="form-control mb-3" asp-for="ProductID">
+        @{
+            foreach(var p in @ViewBag.AllProductsThatAreAvailable)
+            {
+                <option value="@p.ProductID">@p.Name</option>
+            }
+        }
+    </select>
+    @{
+        if(ViewBag.AllProductsThatAreAvailable.Count != 0)
+        {
+            <button class="btn btn-success">Add</button>
+        }
+    }
+</form>
